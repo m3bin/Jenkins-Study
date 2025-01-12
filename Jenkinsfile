@@ -1,10 +1,10 @@
-CODE_CHANGES = getGitChanges()
+# CODE_CHANGES = getGitChanges()
 
 pipeline{
 	agent any
 
     parameters{
-        string(name: 'VERSION', defaultValue: '', description: 'version on prod')
+        # string(name: 'VERSION', defaultValue: '', description: 'version on prod')
         choice(name: 'VERSION', choices: ['1.0', '1.1', '1.2'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
@@ -15,14 +15,14 @@ pipeline{
 
     environment{
         NEW_VERSION = '1.1'
-        SERVER_CREDENTIALS = credentials('server_credentials')
+        # SERVER_CREDENTIALS = credentials('server_credentials')
     }
 
     stages{
         stage('build'){
             steps{
                 echo "building ${NEW_VERSION}"
-                sh "mvn install"
+                # sh "mvn install"
             }
         }
         stage('test'){
@@ -38,11 +38,11 @@ pipeline{
         stage('deploy'){
             steps{
                 echo "deploying ${params.VERSION}"
-                sh "${SERVER_CREDENTIALS}"
-                withCredentials([
-                    usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable:PWD)
-                ]){
-                    sh "${USER} ${PWD}"
+                # sh "${SERVER_CREDENTIALS}"
+                # withCredentials([
+                #    usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable:PWD)
+                # ]){
+                #    sh "${USER} ${PWD}"
                 }
             }
         }
