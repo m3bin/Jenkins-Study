@@ -1,6 +1,6 @@
 // Groovy Script file
 def buildApp() {
-    echo "building application..."
+    echo "building application ${NEW_VERSION}..."
 }
 
 def testApp() {
