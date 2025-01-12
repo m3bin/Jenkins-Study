@@ -1,5 +1,14 @@
 // Groovy Script file
-def initApp() {
-    echo "initing application..."
+def buildApp() {
+    echo "building application..."
 }
+
+def testApp() {
+    echo "testing application..."
+}
+
+def deployApp() {
+    echo "deploying application..."
+}
+
 return this
