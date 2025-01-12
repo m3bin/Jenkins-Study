@@ -2,7 +2,7 @@ pipeline{
 	agent any
 
 	environment{
-        NEW_VERSION = '1.1'
+        NEW_VERSION = '1.0'
     }
 
 	parameters{
@@ -12,10 +12,15 @@ pipeline{
     }
 
     stages{
+	    stage('init'){
+            steps{
+                echo "echoing env variable NEW_VERSION: ${NEW_VERSION}"
+            }
+        }
 
         stage('build'){
             steps{
-                echo "building ${NEW_VERSION}"
+                echo "building ${params.VERSION}"
             }
         }
         stage('test'){
