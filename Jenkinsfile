@@ -14,7 +14,7 @@ pipeline{
     stages{
 	    stage('init'){
             steps{
-                echo "echoing env variable NEW_VERSION: ${NEW_VERSION}"
+                echo "echoing env variable - NEW_VERSION: ${NEW_VERSION}"
 		    script{
 			    gv = load "script.groovy"
 		    }
@@ -23,7 +23,6 @@ pipeline{
 
         stage('build'){
             steps{
-                echo "building ${params.VERSION}"
 		    script{
 			    gv.buildApp()
 		    }
@@ -36,12 +35,16 @@ pipeline{
                 }
             }
             steps{
-                echo 'testing application...'
+                script{
+			    gv.testApp()
+		    }
             }
         }
         stage('deploy'){
             steps{
-        	echo "deploying application..."
+        	script{
+			    gv.deployApp()
+		    }
                 }
             }
         }
