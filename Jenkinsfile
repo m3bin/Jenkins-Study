@@ -1,3 +1,4 @@
+def gv
 pipeline{
 	agent any
 
@@ -6,7 +7,6 @@ pipeline{
     }
 
 	parameters{
-        string(name: 'VERSION', defaultValue: '', description: 'version on prod')
         choice(name: 'VERSION', choices: ['1.0', '1.1', '1.2'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
@@ -15,6 +15,9 @@ pipeline{
 	    stage('init'){
             steps{
                 echo "echoing env variable NEW_VERSION: ${NEW_VERSION}"
+		    script{
+			    gv.initApp()
+		    }
             }
         }
 
