@@ -1,6 +1,6 @@
 def gv
 pipeline{
-	agent {label 'local-node-1'}
+	agent any
 
 	environment{
         NEW_VERSION = '1.0'
@@ -21,13 +21,24 @@ pipeline{
             }
         }
 
-        stage('build'){
-            steps{
-		    script{
-			    gv.buildApp()
-		    }
-            }
+        stage('parallel execution'){
+		parallel{
+			stage('build on main node'){
+				agent{label 'built-in-node'}
+				steps{
+					echo 'building on main node'
+				}
+			}
+		stage('build on local node'){
+				agent{label 'local-node-1'}
+				steps{
+					echo 'building on local node 1'
+				}
+			}	
+		}
+		
         }
+	    
         stage('test'){
 		when{
                 expression{
