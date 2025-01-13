@@ -1,6 +1,6 @@
 def gv
 pipeline{
-	agent any
+	agent {label 'local-node-1'}
 
 	environment{
         NEW_VERSION = '1.0'
