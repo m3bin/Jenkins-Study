@@ -38,15 +38,17 @@ pipeline{
         }
     }
   }
-  success {
-    echo "Pipeline succeeded!"
-  }
-  failure {
-    echo "Pipeline failed. Please check the logs."
-  }
-  always {
-    echo "Performing final cleanup..."
-    cleanWorkspace()
+  post{
+    success {
+      echo "Pipeline succeeded!"
+    }
+    failure {
+      echo "Pipeline failed. Please check the logs."
+    }
+    always {
+      echo "Performing final cleanup..."
+      cleanWorkspace()
+    }
   }
 }
 
