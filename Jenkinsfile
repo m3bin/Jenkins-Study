@@ -1,5 +1,5 @@
 pipeline{
-  agent none
+  agent any
   environment{
     PROJECT_NAME = "sample project"
     BUILD_DIR = "build"
