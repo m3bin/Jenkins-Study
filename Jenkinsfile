@@ -28,15 +28,29 @@ pipeline{
             echo 'testing on node 2...'
           }
         }
-      }
-      stage('deploy'){
+      }    
+    }
+    stage('deploy'){
         agent {label 'built-in-node'}
         steps{
           cleanWorkspace()
           echo 'deploying app...'
         }
-      }
-      
     }
   }
+  success {
+    echo "Pipeline succeeded!"
+  }
+  failure {
+    echo "Pipeline failed. Please check the logs."
+  }
+  always {
+    echo "Performing final cleanup..."
+    cleanWorkspace()
+  }
+}
+
+def cleanWorkspace(){
+  deleteDir()
+  echo "Workspace cleaned!"
 }
