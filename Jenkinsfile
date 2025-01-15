@@ -1,12 +1,12 @@
-@Library('demo-shared-library')
+@Library('demo-shared-library') _
 pipeline{
   agent any
   stages{
     stage('example'){
       steps{
         script{
-          demoSharedLibrary.helloWorld.call(name:"Mebin",day:"Monday")
-          demoSharedLibrary.helloWorld.add(2,3)
+          helloWorld.call(name:"Mebin",day:"Monday")
+          helloWorld.add(2,3)
         }
       }
     }
