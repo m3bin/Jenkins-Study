@@ -4,10 +4,11 @@ pipeline{
   stages{
     stage('example'){
       steps{
-        script{
+        helloWorld(name:"Mebin",day:"Monday")
+       /* script{
           helloWorld.call(name:"Mebin",day:"Monday")
           helloWorld.add(2,3)
-        }
+        } */
       }
     }
   }
