@@ -5,7 +5,7 @@ pipeline{
     stage('example'){
       steps{
         helloWorld(name:"Mebin",day:"Monday")
-        helloWorld.add(2,3)
+        script {helloWorld.add(2,3)}
       }
     }
   }
