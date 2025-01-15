@@ -5,8 +5,8 @@ pipeline{
     stage('example'){
       steps{
         script{
-          demo-shared-library.helloWorld.call(name:"Mebin",day:"Monday")
-          demo-shared-library.helloWorld.add(2,3)
+          demoSharedLibrary.helloWorld.call(name:"Mebin",day:"Monday")
+          demoSharedLibrary.helloWorld.add(2,3)
         }
       }
     }
