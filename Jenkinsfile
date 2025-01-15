@@ -5,6 +5,7 @@ pipeline{
     stage('example'){
       steps{
         helloWorld(name:"Mebin",day:"Monday")
+        helloWorld(2,3)
       }
     }
   }
